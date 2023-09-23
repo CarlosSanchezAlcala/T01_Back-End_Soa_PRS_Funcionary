@@ -18,7 +18,9 @@ public class Funcionary {
     @Column
     private String name;
     @Column
-    private String surname;
+    private String surnamefather;
+    @Column
+    private String surnamemother;
     @Column
     private String dni;
     @Column
@@ -34,9 +36,10 @@ public class Funcionary {
     @Column
     private String estado;
 
-    public Funcionary(String name, String surname, String dni, String phonenumber, String rank, String department, String address, String email, String estado) {
+    public Funcionary(String name, String surnamefather, String surnamemother, String dni, String phonenumber, String rank, String department, String address, String email, String estado) {
         this.name = name;
-        this.surname = surname;
+        this.surnamefather = surnamefather;
+        this.surnamemother = surnamemother;
         this.dni = dni;
         this.phonenumber = phonenumber;
         this.rank = rank;

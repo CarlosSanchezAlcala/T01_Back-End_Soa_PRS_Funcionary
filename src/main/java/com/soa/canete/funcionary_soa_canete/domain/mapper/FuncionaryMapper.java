@@ -12,7 +12,8 @@ public class FuncionaryMapper {
     public static Funcionary toModel(FuncionaryRequestDto dto) {
         return new Funcionary(
                 dto.getName(),
-                dto.getSurname(),
+                dto.getSurnamefather(),
+                dto.getSurnamemother(),
                 dto.getDni(),
                 dto.getPhonenumber(),
                 dto.getRank(),
@@ -27,7 +28,8 @@ public class FuncionaryMapper {
         return new Funcionary(
                 id_funcionary,
                 dto.getName(),
-                dto.getSurname(),
+                dto.getSurnamefather(),
+                dto.getSurnamemother(),
                 dto.getDni(),
                 dto.getPhonenumber(),
                 dto.getRank(),
@@ -42,7 +44,8 @@ public class FuncionaryMapper {
         return new FuncionaryResponseDto(
                 model.getId_funcionary(),
                 model.getName(),
-                model.getSurname(),
+                model.getSurnamefather(),
+                model.getSurnamemother(),
                 model.getDni(),
                 model.getPhonenumber(),
                 model.getRank(),
