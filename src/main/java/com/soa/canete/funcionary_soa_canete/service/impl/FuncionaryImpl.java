@@ -46,6 +46,14 @@ public class FuncionaryImpl implements FuncionaryService {
     }
 
     @Override
+    public Flux<FuncionaryResponseDto> findAllRankLegalGuardian() {
+        return this.funcionaryRepository.findAll()
+                .sort(Comparator.comparing(Funcionary::getId_funcionary).reversed())
+                .filter((legalGuardian) -> legalGuardian.getRank().equals("Tutor Legal"))
+                .map(FuncionaryMapper::toDto);
+    }
+
+    @Override
     public Flux<FuncionaryResponseDto> findAllInactive() {
         return this.funcionaryRepository.findAll()
                 .sort(Comparator.comparing(Funcionary::getId_funcionary).reversed())

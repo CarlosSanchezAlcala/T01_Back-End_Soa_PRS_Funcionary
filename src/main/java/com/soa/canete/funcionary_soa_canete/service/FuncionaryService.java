@@ -12,6 +12,7 @@ public interface FuncionaryService {
     Mono<FuncionaryResponseDto> findById(Integer id_funcionary);
     Flux<FuncionaryResponseDto> findAll();
     Flux<FuncionaryResponseDto> findAllActive();
+    Flux<FuncionaryResponseDto> findAllRankLegalGuardian();
     Flux<FuncionaryResponseDto> findAllInactive();
     Mono<FuncionaryResponseDto> saveNewLegalGuardian(FuncionaryRequestDto request);
     Mono<FuncionaryResponseDto> updateLegalGuardian(FuncionaryRequestDto request, Integer id_funcionary);

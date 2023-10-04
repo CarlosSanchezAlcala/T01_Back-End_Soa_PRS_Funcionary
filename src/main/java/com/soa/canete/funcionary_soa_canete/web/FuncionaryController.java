@@ -17,7 +17,6 @@ import reactor.core.publisher.Mono;
 public class FuncionaryController {
 
     final FuncionaryService funcionaryService;
-
     final FuncionaryRepository funcionaryRepository;
 
     @GetMapping("{id_funcionary}")
@@ -33,6 +32,11 @@ public class FuncionaryController {
     @GetMapping("/listData/active")
     public Flux<FuncionaryResponseDto> getDataFuncionaryActive() {
         return this.funcionaryService.findAllActive();
+    }
+
+    @GetMapping("/listData/legalGuardian")
+    public Flux<FuncionaryResponseDto> getDataFuncionaryRankLegalGuardian() {
+        return this.funcionaryService.findAllRankLegalGuardian();
     }
 
     @GetMapping("/listData/inactive")
