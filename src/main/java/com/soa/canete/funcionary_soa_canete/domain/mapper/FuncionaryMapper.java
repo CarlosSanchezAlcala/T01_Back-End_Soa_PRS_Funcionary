@@ -16,11 +16,12 @@ public class FuncionaryMapper {
                 dto.getSurnamemother(),
                 dto.getDni(),
                 dto.getPhonenumber(),
-                dto.getRank(),
+                dto.getRange(),
+                dto.getConfirmation(),
                 dto.getDepartment(),
                 dto.getAddress(),
                 dto.getEmail(),
-                dto.getEstado()
+                dto.getStatus()
         );
     }
 
@@ -32,11 +33,12 @@ public class FuncionaryMapper {
                 dto.getSurnamemother(),
                 dto.getDni(),
                 dto.getPhonenumber(),
-                dto.getRank(),
+                dto.getRange(),
+                dto.getConfirmation(),
                 dto.getDepartment(),
                 dto.getAddress(),
                 dto.getEmail(),
-                dto.getEstado()
+                dto.getStatus()
         );
     }
 
@@ -48,11 +50,12 @@ public class FuncionaryMapper {
                 model.getSurnamemother(),
                 model.getDni(),
                 model.getPhonenumber(),
-                model.getRank(),
+                model.getRange(),
+                model.getConfirmation(),
                 model.getDepartment(),
                 model.getAddress(),
                 model.getEmail(),
-                model.getEstado()
+                model.getStatus()
         );
     }
 

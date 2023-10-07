@@ -7,7 +7,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
-@Table(name = "funcionarios")
+@Table(name = "funcionary")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -26,7 +26,9 @@ public class Funcionary {
     @Column
     private String phonenumber;
     @Column
-    private String rank;
+    private String range;
+    @Column
+    private String confirmation;
     @Column
     private String department;
     @Column
@@ -34,18 +36,19 @@ public class Funcionary {
     @Column
     private String email;
     @Column
-    private String estado;
+    private String status;
 
-    public Funcionary(String name, String surnamefather, String surnamemother, String dni, String phonenumber, String rank, String department, String address, String email, String estado) {
+    public Funcionary(String name, String surnamefather, String surnamemother, String dni, String phonenumber, String range, String confirmation, String department, String address, String email, String status) {
         this.name = name;
         this.surnamefather = surnamefather;
         this.surnamemother = surnamemother;
         this.dni = dni;
         this.phonenumber = phonenumber;
-        this.rank = rank;
+        this.range = range;
+        this.confirmation = confirmation;
         this.department = department;
         this.address = address;
         this.email = email;
-        this.estado = estado;
+        this.status = status;
     }
 }

@@ -41,7 +41,7 @@ public class FuncionaryImpl implements FuncionaryService {
     public Flux<FuncionaryResponseDto> findAllActive() {
         return this.funcionaryRepository.findAll()
                 .sort(Comparator.comparing(Funcionary::getId_funcionary).reversed())
-                .filter(active -> active.getEstado().equals("A"))
+                .filter(active -> active.getStatus().equals("A"))
                 .map(FuncionaryMapper::toDto);
     }
 
@@ -49,7 +49,7 @@ public class FuncionaryImpl implements FuncionaryService {
     public Flux<FuncionaryResponseDto> findAllRankLegalGuardian() {
         return this.funcionaryRepository.findAll()
                 .sort(Comparator.comparing(Funcionary::getId_funcionary).reversed())
-                .filter((legalGuardian) -> legalGuardian.getRank().equals("Tutor Legal"))
+                .filter((legalGuardian) -> legalGuardian.getConfirmation().equals("S"))
                 .map(FuncionaryMapper::toDto);
     }
 
@@ -57,7 +57,7 @@ public class FuncionaryImpl implements FuncionaryService {
     public Flux<FuncionaryResponseDto> findAllInactive() {
         return this.funcionaryRepository.findAll()
                 .sort(Comparator.comparing(Funcionary::getId_funcionary).reversed())
-                .filter(active -> active.getEstado().equals("I"))
+                .filter(active -> active.getStatus().equals("I"))
                 .map(FuncionaryMapper::toDto);
     }
 
@@ -79,7 +79,7 @@ public class FuncionaryImpl implements FuncionaryService {
     public Mono<FuncionaryResponseDto> deleteLogicalLegalGuardian(Integer id_funcionary) {
         return this.funcionaryRepository.findById(id_funcionary)
                 .map((delete) -> {
-                    delete.setEstado("I");
+                    delete.setStatus("I");
                     return delete;
                 })
                 .flatMap(funcionaryRepository::save)
@@ -90,7 +90,7 @@ public class FuncionaryImpl implements FuncionaryService {
     public Mono<FuncionaryResponseDto> reactiveLogicalLegalGuardian(Integer id_funcionary) {
         return this.funcionaryRepository.findById(id_funcionary)
                 .map((reactive) -> {
-                    reactive.setEstado("A");
+                    reactive.setStatus("A");
                     return reactive;
                 })
                 .flatMap(funcionaryRepository::save)
