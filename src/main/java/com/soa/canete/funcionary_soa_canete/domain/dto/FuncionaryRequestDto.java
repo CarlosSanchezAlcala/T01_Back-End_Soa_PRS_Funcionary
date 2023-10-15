@@ -29,11 +29,11 @@ public class FuncionaryRequestDto implements Serializable {
     @Column
     private String confirmation;
     @Column
-    private String department;
-    @Column
     private String address;
     @Column
     private String email;
+    @Column
+    private String codubi;
     @Column
     private String status;
 }

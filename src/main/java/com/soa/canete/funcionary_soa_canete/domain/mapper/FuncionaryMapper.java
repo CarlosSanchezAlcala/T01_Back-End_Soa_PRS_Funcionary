@@ -18,9 +18,9 @@ public class FuncionaryMapper {
                 dto.getPhonenumber(),
                 dto.getRange(),
                 dto.getConfirmation(),
-                dto.getDepartment(),
                 dto.getAddress(),
                 dto.getEmail(),
+                dto.getCodubi(),
                 dto.getStatus()
         );
     }
@@ -35,9 +35,9 @@ public class FuncionaryMapper {
                 dto.getPhonenumber(),
                 dto.getRange(),
                 dto.getConfirmation(),
-                dto.getDepartment(),
                 dto.getAddress(),
                 dto.getEmail(),
+                dto.getCodubi(),
                 dto.getStatus()
         );
     }
@@ -52,9 +52,9 @@ public class FuncionaryMapper {
                 model.getPhonenumber(),
                 model.getRange(),
                 model.getConfirmation(),
-                model.getDepartment(),
                 model.getAddress(),
                 model.getEmail(),
+                model.getCodubi(),
                 model.getStatus()
         );
     }

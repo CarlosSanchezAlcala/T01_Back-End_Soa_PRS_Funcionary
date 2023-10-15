@@ -30,15 +30,15 @@ public class Funcionary {
     @Column
     private String confirmation;
     @Column
-    private String department;
-    @Column
     private String address;
     @Column
     private String email;
     @Column
+    private String codubi;
+    @Column
     private String status;
 
-    public Funcionary(String name, String surnamefather, String surnamemother, String dni, String phonenumber, String range, String confirmation, String department, String address, String email, String status) {
+    public Funcionary(String name, String surnamefather, String surnamemother, String dni, String phonenumber, String range, String confirmation, String address, String email, String codubi, String status) {
         this.name = name;
         this.surnamefather = surnamefather;
         this.surnamemother = surnamemother;
@@ -46,9 +46,9 @@ public class Funcionary {
         this.phonenumber = phonenumber;
         this.range = range;
         this.confirmation = confirmation;
-        this.department = department;
         this.address = address;
         this.email = email;
+        this.codubi = codubi;
         this.status = status;
     }
 }
