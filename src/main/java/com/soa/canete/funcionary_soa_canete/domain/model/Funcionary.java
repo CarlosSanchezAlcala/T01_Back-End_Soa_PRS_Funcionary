@@ -17,14 +17,14 @@ public class Funcionary {
     private Integer id_funcionary;
     @Column
     private String name;
-    @Column
-    private String surnamefather;
-    @Column
-    private String surnamemother;
+    @Column("surnamefather")
+    private String surnameFather;
+    @Column("surnamemother")
+    private String surnameMother;
     @Column
     private String dni;
-    @Column
-    private String phonenumber;
+    @Column("phonenumber")
+    private String phoneNumber;
     @Column
     private String range;
     @Column
@@ -38,12 +38,13 @@ public class Funcionary {
     @Column
     private String status;
 
-    public Funcionary(String name, String surnamefather, String surnamemother, String dni, String phonenumber, String range, String confirmation, String address, String email, String codubi, String status) {
+    public Funcionary(String name, String surnameFather, String surnameMother, String dni, String phoneNumber,
+                      String range, String confirmation, String address, String email, String codubi, String status) {
         this.name = name;
-        this.surnamefather = surnamefather;
-        this.surnamemother = surnamemother;
+        this.surnameFather = surnameFather;
+        this.surnameMother = surnameMother;
         this.dni = dni;
-        this.phonenumber = phonenumber;
+        this.phoneNumber = phoneNumber;
         this.range = range;
         this.confirmation = confirmation;
         this.address = address;
