@@ -50,6 +50,7 @@ public class FuncionaryImpl implements FuncionaryService {
         return this.funcionaryRepository.findAll()
                 .sort(Comparator.comparing(Funcionary::getId_funcionary).reversed())
                 .filter((legalGuardian) -> legalGuardian.getConfirmation().equals("S"))
+                .filter((legalGuardian) -> legalGuardian.getStatus().equals("A"))
                 .map(FuncionaryMapper::toDto);
     }
 
