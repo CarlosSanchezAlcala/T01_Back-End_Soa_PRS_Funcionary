@@ -25,8 +25,14 @@ import static com.soa.canete.funcionary_soa_canete.domain.mapper.FuncionaryMappe
 public class FuncionaryImpl implements FuncionaryService {
 
     final FuncionaryRepository funcionaryRepository;
-    @Autowired
+
     private FuncReportGenerator funcReportGenerator;
+
+    @Autowired
+    public FuncionaryImpl(FuncionaryRepository funcionaryRepository, FuncReportGenerator funcReportGenerator) {
+        this.funcionaryRepository = funcionaryRepository;
+        this.funcReportGenerator = funcReportGenerator;
+    }
 
 
     @Override
@@ -107,12 +113,14 @@ public class FuncionaryImpl implements FuncionaryService {
     public Mono<Void> deleteLegalGuardian(Integer id_funcionary) {
         return this.funcionaryRepository.deleteById(id_funcionary);
     }
+
     @Override
     public Mono<Mono<byte[]>> exportPdf() {
         return funcionaryRepository.findAll()
                 .collectList()
                 .map(funcReportGenerator::exportToPdf);
     }
+
     @Override
     public Mono<Mono<byte[]>> exportXls() {
         return funcionaryRepository.findAll()
