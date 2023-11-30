@@ -5,7 +5,7 @@ import com.soa.canete.funcionary_soa_canete.domain.dto.FuncionaryResponseDto;
 import com.soa.canete.funcionary_soa_canete.repository.FuncionaryRepository;
 import com.soa.canete.funcionary_soa_canete.service.FuncionaryService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -68,6 +68,29 @@ public class FuncionaryController {
     @DeleteMapping("/{id_funcionary}")
     public Mono<Void> deleteTotalFuncionary(@PathVariable Integer id_funcionary) {
         return this.funcionaryService.deleteLegalGuardian(id_funcionary);
+    }
+
+    @GetMapping("/export-pdf")
+    public Mono<ResponseEntity<byte[]>> exportPdf() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDispositionFormData("FuncReport", "FuncReport.pdf");
+
+        return funcionaryService.exportPdf()
+                .flatMap(pdfBytes -> pdfBytes)
+                .map(pdfBytes -> ResponseEntity.ok().headers(headers).body(pdfBytes));
+    }
+
+    @GetMapping("/export-xls")
+    public Mono<ResponseEntity<byte[]>> exportXls() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.parseMediaType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"));
+        headers.setContentDisposition(ContentDisposition.builder("attachment")
+                .filename("FuncReport.xls").build());
+
+        return funcionaryService.exportXls()
+                .flatMap(xlsBytes -> xlsBytes)
+                .map(xlsBytes -> ResponseEntity.ok().headers(headers).body(xlsBytes));
     }
 
 }

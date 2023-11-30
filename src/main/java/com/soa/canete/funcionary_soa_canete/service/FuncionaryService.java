@@ -19,5 +19,7 @@ public interface FuncionaryService {
     Mono<FuncionaryResponseDto> deleteLogicalLegalGuardian(Integer id_funcionary);
     Mono<FuncionaryResponseDto> reactiveLogicalLegalGuardian(Integer id_funcionary);
     Mono<Void> deleteLegalGuardian(Integer id_funcionary);
+    Mono<Mono<byte[]>> exportPdf();
+    Mono<Mono<byte[]>> exportXls();
 
 }

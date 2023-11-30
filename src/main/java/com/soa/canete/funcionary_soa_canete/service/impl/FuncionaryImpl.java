@@ -7,8 +7,10 @@ import com.soa.canete.funcionary_soa_canete.domain.model.Funcionary;
 import com.soa.canete.funcionary_soa_canete.exception.ResourceNotFoundException;
 import com.soa.canete.funcionary_soa_canete.repository.FuncionaryRepository;
 import com.soa.canete.funcionary_soa_canete.service.FuncionaryService;
+import com.soa.canete.funcionary_soa_canete.util.FuncReportGenerator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -23,6 +25,9 @@ import static com.soa.canete.funcionary_soa_canete.domain.mapper.FuncionaryMappe
 public class FuncionaryImpl implements FuncionaryService {
 
     final FuncionaryRepository funcionaryRepository;
+    @Autowired
+    private FuncReportGenerator funcReportGenerator;
+
 
     @Override
     public Mono<FuncionaryResponseDto> findById(Integer id_funcionary) {
@@ -102,4 +107,18 @@ public class FuncionaryImpl implements FuncionaryService {
     public Mono<Void> deleteLegalGuardian(Integer id_funcionary) {
         return this.funcionaryRepository.deleteById(id_funcionary);
     }
+    @Override
+    public Mono<Mono<byte[]>> exportPdf() {
+        return funcionaryRepository.findAll()
+                .collectList()
+                .map(funcReportGenerator::exportToPdf);
+    }
+    @Override
+    public Mono<Mono<byte[]>> exportXls() {
+        return funcionaryRepository.findAll()
+                .collectList()
+                .map(funcReportGenerator::exportToXls);
+    }
+
+
 }
