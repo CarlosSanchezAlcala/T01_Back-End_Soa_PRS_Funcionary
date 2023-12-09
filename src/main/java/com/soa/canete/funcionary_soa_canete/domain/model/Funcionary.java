@@ -36,10 +36,13 @@ public class Funcionary {
     @Column
     private String codubi;
     @Column
+    private Integer id_operativeunit;
+    @Column
     private String status;
 
     public Funcionary(String name, String surnameFather, String surnameMother, String dni, String phoneNumber,
-                      String range, String confirmation, String address, String email, String codubi, String status) {
+                      String range, String confirmation, String address, String email, String codubi, Integer id_operativeunit,
+                      String status) {
         this.name = name;
         this.surnameFather = surnameFather;
         this.surnameMother = surnameMother;
@@ -50,6 +53,7 @@ public class Funcionary {
         this.address = address;
         this.email = email;
         this.codubi = codubi;
+        this.id_operativeunit = id_operativeunit;
         this.status = status;
     }
 }

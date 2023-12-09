@@ -21,6 +21,7 @@ public class FuncionaryMapper {
                 dto.getAddress(),
                 dto.getEmail(),
                 dto.getCodubi(),
+                dto.getId_operativeunit(),
                 dto.getStatus()
         );
     }
@@ -38,6 +39,7 @@ public class FuncionaryMapper {
                 dto.getAddress(),
                 dto.getEmail(),
                 dto.getCodubi(),
+                dto.getId_operativeunit(),
                 dto.getStatus()
         );
     }
@@ -55,6 +57,7 @@ public class FuncionaryMapper {
                 model.getAddress(),
                 model.getEmail(),
                 model.getCodubi(),
+                model.getId_operativeunit(),
                 model.getStatus()
         );
     }
