@@ -24,6 +24,11 @@ public class FuncionaryController {
         return this.funcionaryService.findById(id_funcionary);
     }
 
+    @GetMapping("/bySoaInfo/{id_operativeunit}")
+    public Flux<FuncionaryResponseDto> getDataFuncionaryByIdSoa(@PathVariable Integer id_operativeunit) {
+        return this.funcionaryService.findByIdOperativeUnit(id_operativeunit);
+    }
+
     @GetMapping("/listData")
     public Flux<FuncionaryResponseDto> getDataFuncionaryComplete() {
         return this.funcionaryService.findAll();

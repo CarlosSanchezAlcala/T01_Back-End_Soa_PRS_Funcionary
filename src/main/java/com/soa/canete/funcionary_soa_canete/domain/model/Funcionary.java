@@ -35,13 +35,13 @@ public class Funcionary {
     private String email;
     @Column
     private String codubi;
-    @Column
-    private Integer id_operativeunit;
+    @Column("id_operativeunit")
+    private Integer idOperativeUnit;
     @Column
     private String status;
 
     public Funcionary(String name, String surnameFather, String surnameMother, String dni, String phoneNumber,
-                      String range, String confirmation, String address, String email, String codubi, Integer id_operativeunit,
+                      String range, String confirmation, String address, String email, String codubi, Integer idOperativeUnit,
                       String status) {
         this.name = name;
         this.surnameFather = surnameFather;
@@ -53,7 +53,7 @@ public class Funcionary {
         this.address = address;
         this.email = email;
         this.codubi = codubi;
-        this.id_operativeunit = id_operativeunit;
+        this.idOperativeUnit = idOperativeUnit;
         this.status = status;
     }
 }

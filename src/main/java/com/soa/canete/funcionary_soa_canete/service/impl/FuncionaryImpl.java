@@ -42,6 +42,12 @@ public class FuncionaryImpl implements FuncionaryService {
     }
 
     @Override
+    public Flux<FuncionaryResponseDto> findByIdOperativeUnit(Integer id_operativeunit) {
+        return this.funcionaryRepository.findByIdOperativeUnit(id_operativeunit)
+                .map(FuncionaryMapper::toDto);
+    }
+
+    @Override
     public Flux<FuncionaryResponseDto> findAll() {
         return this.funcionaryRepository.findAll()
                 .sort(Comparator.comparing(Funcionary::getId_funcionary).reversed())

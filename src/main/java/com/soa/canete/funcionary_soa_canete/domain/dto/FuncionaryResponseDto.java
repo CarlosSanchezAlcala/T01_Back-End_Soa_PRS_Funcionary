@@ -37,8 +37,8 @@ public class FuncionaryResponseDto implements Serializable {
     private String email;
     @Column
     private String codubi;
-    @Column
-    private Integer id_operativeunit;
+    @Column("id_operativeunit")
+    private Integer idOperativeUnit;
     @Column
     private String status;
 }

@@ -10,16 +10,29 @@ import reactor.core.publisher.Mono;
 public interface FuncionaryService {
 
     Mono<FuncionaryResponseDto> findById(Integer id_funcionary);
+
+    Flux<FuncionaryResponseDto> findByIdOperativeUnit(Integer id_operativeunit);
+
     Flux<FuncionaryResponseDto> findAll();
+
     Flux<FuncionaryResponseDto> findAllActive();
+
     Flux<FuncionaryResponseDto> findAllRankLegalGuardian();
+
     Flux<FuncionaryResponseDto> findAllInactive();
+
     Mono<FuncionaryResponseDto> saveNewLegalGuardian(FuncionaryRequestDto request);
+
     Mono<FuncionaryResponseDto> updateLegalGuardian(FuncionaryRequestDto request, Integer id_funcionary);
+
     Mono<FuncionaryResponseDto> deleteLogicalLegalGuardian(Integer id_funcionary);
+
     Mono<FuncionaryResponseDto> reactiveLogicalLegalGuardian(Integer id_funcionary);
+
     Mono<Void> deleteLegalGuardian(Integer id_funcionary);
+
     Mono<Mono<byte[]>> exportPdf();
+
     Mono<Mono<byte[]>> exportXls();
 
 }
