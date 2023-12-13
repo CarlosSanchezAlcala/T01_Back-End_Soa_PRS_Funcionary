@@ -1,9 +1,7 @@
 package com.soa.canete.funcionary_soa_canete;
 
 import com.soa.canete.funcionary_soa_canete.domain.dto.FuncionaryRequestDto;
-import com.soa.canete.funcionary_soa_canete.domain.model.Funcionary;
 import com.soa.canete.funcionary_soa_canete.repository.FuncionaryRepository;
-import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
