@@ -86,16 +86,4 @@ public class FuncionaryController {
                 .map(pdfBytes -> ResponseEntity.ok().headers(headers).body(pdfBytes));
     }
 
-    @GetMapping("/export-xls")
-    public Mono<ResponseEntity<byte[]>> exportXls() {
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.parseMediaType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"));
-        headers.setContentDisposition(ContentDisposition.builder("attachment")
-                .filename("FuncReport.xls").build());
-
-        return funcionaryService.exportXls()
-                .flatMap(xlsBytes -> xlsBytes)
-                .map(xlsBytes -> ResponseEntity.ok().headers(headers).body(xlsBytes));
-    }
-
 }

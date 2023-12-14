@@ -33,6 +33,5 @@ public interface FuncionaryService {
 
     Mono<Mono<byte[]>> exportPdf();
 
-    Mono<Mono<byte[]>> exportXls();
 
 }
