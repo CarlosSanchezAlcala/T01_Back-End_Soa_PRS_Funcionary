@@ -44,6 +44,7 @@ public class FuncionaryImpl implements FuncionaryService {
     @Override
     public Flux<FuncionaryResponseDto> findByIdOperativeUnit(Integer id_operativeunit) {
         return this.funcionaryRepository.findByIdOperativeUnit(id_operativeunit)
+                .filter((legalGuardian) -> legalGuardian.getConfirmation().equals("S"))
                 .map(FuncionaryMapper::toDto);
     }
 
