@@ -4,18 +4,29 @@ import com.soa.canete.funcionary_soa_canete.domain.dto.FuncionaryRequestDto;
 import com.soa.canete.funcionary_soa_canete.domain.dto.FuncionaryResponseDto;
 import com.soa.canete.funcionary_soa_canete.domain.mapper.FuncionaryMapper;
 import com.soa.canete.funcionary_soa_canete.domain.model.Funcionary;
+import com.soa.canete.funcionary_soa_canete.domain.report.AsignationProgramsReportDto;
 import com.soa.canete.funcionary_soa_canete.exception.ResourceNotFoundException;
 import com.soa.canete.funcionary_soa_canete.repository.FuncionaryRepository;
 import com.soa.canete.funcionary_soa_canete.service.FuncionaryService;
 import com.soa.canete.funcionary_soa_canete.util.FuncReportGenerator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.util.JRLoader;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ResourceUtils;
+import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.io.File;
 import java.util.Comparator;
+import java.util.HashMap;
 
 import static com.soa.canete.funcionary_soa_canete.domain.mapper.FuncionaryMapper.toModel;
 
@@ -28,10 +39,12 @@ public class FuncionaryImpl implements FuncionaryService {
 
     private FuncReportGenerator funcReportGenerator;
 
+    private WebClient.Builder webClientBuilder;
     @Autowired
-    public FuncionaryImpl(FuncionaryRepository funcionaryRepository, FuncReportGenerator funcReportGenerator) {
+    public FuncionaryImpl(FuncionaryRepository funcionaryRepository, FuncReportGenerator funcReportGenerator,  WebClient.Builder webClientBuilder) {
         this.funcionaryRepository = funcionaryRepository;
         this.funcReportGenerator = funcReportGenerator;
+        this.webClientBuilder = webClientBuilder;
     }
 
 
@@ -127,13 +140,5 @@ public class FuncionaryImpl implements FuncionaryService {
                 .collectList()
                 .map(funcReportGenerator::exportToPdf);
     }
-
-    @Override
-    public Mono<Mono<byte[]>> exportXls() {
-        return funcionaryRepository.findAll()
-                .collectList()
-                .map(funcReportGenerator::exportToXls);
-    }
-
 
 }

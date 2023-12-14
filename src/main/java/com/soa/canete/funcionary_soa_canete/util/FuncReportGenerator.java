@@ -27,24 +27,8 @@ public class FuncReportGenerator {
                 .subscribeOn(jdbcScheduler);
     }
 
-    public Mono<byte[]> exportToXls(List<Funcionary> list) {
-        return Mono.fromCallable(() -> generateXls(list))
-                .subscribeOn(jdbcScheduler);
-    }
-
     private byte[] generatePdf(List<Funcionary> list) throws JRException, FileNotFoundException {
         return JasperExportManager.exportReportToPdf(getReport(list));
-    }
-
-    private byte[] generateXls(List<Funcionary> list) throws JRException, FileNotFoundException {
-        ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
-        SimpleOutputStreamExporterOutput output = new SimpleOutputStreamExporterOutput(byteArray);
-        JRXlsExporter exporter = new JRXlsExporter();
-        exporter.setExporterInput(new SimpleExporterInput(getReport(list)));
-        exporter.setExporterOutput(output);
-        exporter.exportReport();
-        output.close();
-        return byteArray.toByteArray();
     }
 
     private JasperPrint getReport(List<Funcionary> list) throws FileNotFoundException, JRException {
